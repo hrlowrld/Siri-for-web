@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Siri27",
+  "description": "A floating, Liquid Glass-inspired web assistant with voice, notes, reminders, timers and web utilities.",
+  "version": "1.0.0",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "activeTab",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.open-meteo.com/*",
+    "https://geocoding-api.open-meteo.com/*",
+    "https://chatgpt.com/*",
+    "https://www.fitbit.com/*",
+    "https://api.fitbit.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open Siri27"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "128": "icon.svg"
+  }
+}
