@@ -1,0 +1,2 @@
+// Optional helper for a user-initiated ChatGPT tab. It never reads private page data.
+(()=>{const p=new URLSearchParams(location.search);const promptText=p.get("siri27_prompt");if(!promptText||!location.hostname.endsWith("chatgpt.com"))return;window.addEventListener("load",()=>{const box=document.querySelector("#prompt-textarea,[contenteditable=true]");if(box){box.focus();document.execCommand("insertText",false,promptText);}}, {once:true});})();
