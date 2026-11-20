@@ -1,0 +1,25 @@
+name: Build Siri27 ZIP
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Build extension ZIP
+        run: python build.py
+      - name: Upload Siri27.zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: Siri27
+          path: dist/Siri27.zip
+          if-no-files-found: error
+          retention-days: 30
